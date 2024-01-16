@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "f33ffddc-4e85-492e-bf7d-16cefe70b75a",
+		"name": "personnelManagementandTracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Commander",
+			"item": [
+				{
+					"name": "Create Commander",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"Balcem\",\r\n    \"commanderRole\" : \"regular\",\r\n    \"password\" : \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/commander/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Commander By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/commander/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Commander List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/commander/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Commander",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"coco\",\r\n    \"commanderRole\" : \"bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/commander/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Commander",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commanderRole\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/commander/33943280-552f-46c6-91cd-ca56098c915d",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								"33943280-552f-46c6-91cd-ca56098c915d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Commander",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/commander/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"commander",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Deployment",
+			"item": [
+				{
+					"name": "Get Deployment By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/deployment/684291b4-66be-432b-afeb-e6d7dd7c9dca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								"684291b4-66be-432b-afeb-e6d7dd7c9dca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Deployments List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/deployment/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Deployment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/deployment/684291b4-66be-432b-afeb-e6d7dd7c9dca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								"684291b4-66be-432b-afeb-e6d7dd7c9dca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Deployment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geoLocation\" : {\r\n        \"longitude\" : \"here\",\r\n        \"latitude\" : \"there\"\r\n    },\r\n    \"startDate\" : \"2024-11-07T00:00\",\r\n    \"endDate\" : \"2024-12-03T00:00\",\r\n    \"status\" : \"SCHEDULED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/deployment/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Deployment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geoLocation\" : \"updated\",\r\n    \"enlisted\" : [],\r\n    \"status\" : \"SCHEDULED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/deployment/684291b4-66be-432b-afeb-e6d7dd7c9dca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								"684291b4-66be-432b-afeb-e6d7dd7c9dca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Deployment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geoLocation\" : \"patch test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/deployment/684291b4-66be-432b-afeb-e6d7dd7c9dca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deployment",
+								"684291b4-66be-432b-afeb-e6d7dd7c9dca"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Enlisted",
+			"item": [
+				{
+					"name": "Create Enlisted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\": \"Malek\",\r\n    \"personnelRole\": \"Commandor\",\r\n    \"health\": \"READY\",\r\n    \"skills\": [\r\n    ],\r\n    \"deployments\": [\r\n        {\r\n            \"id\": \"def0b15f-a537-4de0-9fa2-3181f9506d71\"\r\n        }\r\n    ],\r\n    \"leaveRequests\": [\r\n        {\r\n            \"id\": \"185309ad-5e3f-440f-b087-5661351f78d7\"\r\n        }\r\n    ],\r\n    \"isDeployed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enlisted/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Enlisted By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/enlisted/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Enlisted List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "73a00a2d-f628-4665-8e2c-1037aaa5a618",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/enlisted/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Enlisted",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"coco\",\r\n    \"commanderRole\" : \"bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enlisted/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Enlisted",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"personnelName\": \"bubu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enlisted/a5a75f7d-3fc3-43eb-bef2-3334f2d28b39",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								"a5a75f7d-3fc3-43eb-bef2-3334f2d28b39"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Enlisted",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/enlisted/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enroll Enlisted",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"enlistedId\" : \"f33d0d84-d82c-4968-8f0d-77409cc4dd70\",\r\n    \"deploymentId\" : \"524a1960-19c3-46a6-a11a-7e34172d5ec7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/enlisted/enroll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enlisted",
+								"enroll"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Leave Request",
+			"item": [
+				{
+					"name": "Get Leave Request By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/leave-request/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Leave Requests List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/leave-request/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Leave Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/leave-request/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Leave Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\" : \"2023-12-06T00:00\",\r\n    \"endDate\" : \"2023-12-10T00:00\",\r\n    \"reason\"  : \"annual leave\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/leave-request/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Leave Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"coco\",\r\n    \"commanderRole\" : \"bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/leave-request/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Leave Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"status\": \"ACCEPTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/leave-request/185309ad-5e3f-440f-b087-5661351f78d7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leave-request",
+								"185309ad-5e3f-440f-b087-5661351f78d7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Skill",
+			"item": [
+				{
+					"name": "Create Skill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skillName\" : \"marksman\",\r\n    \"skillDescription\" : \"got a markman degree in shooting range 12/12/2009\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/skill/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Skill By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/skill/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Skills List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/skill/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Skill",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"coco\",\r\n    \"commanderRole\" : \"bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/skill/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Skill",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commanderRole\" : \"manager\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/skill/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Skill",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/skill/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skill",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Get Health By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/health/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Health List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/health/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Health",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/health/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Health",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"healthStatus\" : \"READY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/health/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Health",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personnelName\" : \"coco\",\r\n    \"commanderRole\" : \"bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/health/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Health",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commanderRole\" : \"manager\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/health/864757f6-cb54-4d50-82a1-4f59615c0579",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"health",
+								"864757f6-cb54-4d50-82a1-4f59615c0579"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "LogIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : \"30c6f36a-cd48-416a-a215-a49988e91c60\",\n\t\"password\" : \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "73a00a2d-f628-4665-8e2c-1037aaa5a618",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

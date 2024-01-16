@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory Management</title>
+  <link href="/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="/main.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body class="text-center" data-new-gr-c-s-check-loaded="14.1145.0" data-gr-ext-installed="">
+
+<main class="form-signin">
+
+    <div id="enlistedDetailsContainer"> </div>
+
+</main>
+
+
+
+
+<script src="/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/main.js" crossorigin="anonymous"></script>
+<script>
+  getEnlistedById(window.location.pathname.split('/')[2])
+  function getEnlistedById(id){
+      fetch('/enlisted/' + id, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+        .then(res => {
+        console.warn("Enlisted details", res);
+            renderEnlistedDetails(res);
+        })
+  }
+
+  function renderEnlistedDetails(enlisted){
+      let contents = `
+        <div class="mb-3 row">
+          <label for="enlistedName" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="enlistedName" value="${enlisted.personnelName}">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="enlistedRole" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="enlistedRole" value="${enlisted.personnelRole}">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="enlistedHealth" class="col-sm-2 col-form-label">Health</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="enlistedHealth" value="${enlisted.health}">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="enlistedDeploymentStatus" class="col-sm-2 col-form-label">Deployment status</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="enlistedDeploymentStatus" value="${enlisted.deployed ? "Deployed" : "Standby"}">
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="enlistedSkills" class="col-sm-2 col-form-label">Skills</label>
+          <div class="col-sm-10">
+              ` + skillListRender(enlisted.skills) + `
+          </div>
+        </div>
+
+
+        <div class="mb-3 row">
+          <label for="enlistedDeployments" class="col-sm-2 col-form-label">Deployments</label>
+          <div class="col-sm-10">
+             ` + deploymentListRender(enlisted.deployments) + `
+          </div>
+        </div>
+
+
+
+        <div class="mb-3 row">
+          <label for="enlistedLeaveRequests" class="col-sm-2 col-form-label">Leave requests</label>
+          <div class="col-sm-10">
+          ` + leaveRequestListRender(enlisted.leaveRequests) + `
+          </div>
+        </div>`;
+      document.getElementById("enlistedDetailsContainer").innerHTML = contents;
+  }
+
+
+  function skillListRender(list){
+     let con = `<ul class="list-group">`;
+     for (let i = 0; i < list.length; i++) {
+       con += `<li class="list-group-item">${list[i].skillName}</li>
+              <p>${list[i].skillDescription}</p>
+       `
+     }
+     con += "</ul>"
+     return con;
+  }
+
+
+    function deploymentListRender(list){
+     let con = `<ul class="list-group">`;
+     for (let i = 0; i < list.length; i++) {
+       con += `<li class="list-group-item">${list[i].status}</li>
+              <p>latitude: ${list[i].geoLocation.latitude}</p>
+              <p>longitude: ${list[i].geoLocation.longitude}</p>
+       `
+     }
+     con += "</ul>"
+     return con;
+  }
+
+
+      function leaveRequestListRender(list){
+     let con = `<ul class="list-group">`;
+     for (let i = 0; i < list.length; i++) {
+       con += `<li class="list-group-item">${list[i].status}</li>
+              <p>Start date: ${list[i].startDate}</p>
+              <p>End date: ${list[i].endDate}</p>
+              <p>reason: ${list[i].reason}</p>
+       `
+     }
+     con += "</ul>"
+     return con;
+  }
+
+</script>
+</body>
+</html>
