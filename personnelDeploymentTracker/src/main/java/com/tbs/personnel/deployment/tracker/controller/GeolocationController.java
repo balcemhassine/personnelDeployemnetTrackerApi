@@ -23,26 +23,26 @@ public class GeolocationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GeolocationDto> getById(@PathVariable String id){
+    public ResponseEntity<GeolocationDto> getById(@PathVariable(name = "id") String id){
         GeolocationDto result = service.getById(id);
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<GeolocationDto> update(@PathVariable String id, @RequestBody GeolocationDto geolocationDto){
+    public ResponseEntity<GeolocationDto> update(@PathVariable(name = "id") String id, @RequestBody GeolocationDto geolocationDto){
         GeolocationDto result = service.update(id, geolocationDto);
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GeolocationDto> patch(@PathVariable String id, @RequestBody GeolocationDto geolocationDto){
+    public ResponseEntity<GeolocationDto> patch(@PathVariable(name = "id") String id, @RequestBody GeolocationDto geolocationDto){
         GeolocationDto result = service.patch(id, geolocationDto);
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeolocationDto> delete(@PathVariable String id){
+    public ResponseEntity<GeolocationDto> delete(@PathVariable(name = "id") String id){
         GeolocationDto result = service.delete(id);
         return new ResponseEntity(result, HttpStatus.OK);
     }

@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,5 +20,6 @@ public class Token {
   @Id
   String id;
   String token;
+  LocalDateTime expirationDate;
 
 }

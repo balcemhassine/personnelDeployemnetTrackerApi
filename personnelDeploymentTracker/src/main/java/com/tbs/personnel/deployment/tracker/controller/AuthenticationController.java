@@ -32,4 +32,9 @@ public class AuthenticationController {
   }
 
 
+  @PostMapping("/refresh-token")
+  public ResponseEntity<LoginResponseDto> refreshToken(@RequestHeader(value = "x-token", required = false) String token)
+          throws AuthException {
+    return new ResponseEntity<>(authenticationService.refreshToken(token), HttpStatus.OK);
+  }
 }
