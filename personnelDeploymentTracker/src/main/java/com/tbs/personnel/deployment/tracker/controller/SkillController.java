@@ -37,7 +37,12 @@ public class SkillController {
         SkillDto result = service.create(skillDto);
         return new ResponseEntity(result, HttpStatus.OK);
     }
-
+    @Operation(summary = "Create a list of new Skills")
+    @PostMapping("/skills")
+    public ResponseEntity<SkillDto> createSkills(@RequestBody List<SkillDto> skillDto){
+        List<SkillDto> result = service.createSkills(skillDto);
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
     @Operation(summary = "Update a Skill by ID (All fields in the same time [integral])")
     @PutMapping("/{id}")
     public ResponseEntity<SkillDto> update(@PathVariable(name = "id") String id, @RequestBody SkillDto skillDto){

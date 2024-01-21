@@ -84,7 +84,6 @@ public class EnlistedService {
         return mapper.toDto(savedEntity);
     }
 
-
     public EnlistedDto update(String id, EnlistedDto enlistedDto){
         Enlisted toBeUpdated = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         toBeUpdated.setPersonnelName(enlistedDto.getPersonnelName());

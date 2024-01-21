@@ -3,6 +3,8 @@ package com.tbs.personnel.deployment.tracker.model.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,7 +17,9 @@ public class Skill {
     private String id;
     private String skillName;
     private String skillDescription;
-    @ManyToOne
-    @JoinColumn(name="personnel_id", insertable = false , updatable = false)
-    private Enlisted enlisted;
+
+    @ManyToMany(mappedBy = "skills")
+    //@ManyToOne
+    //@JoinColumn(name="personnel_id", insertable = false , updatable = false)
+    private Set<Enlisted> enlisted;
 }

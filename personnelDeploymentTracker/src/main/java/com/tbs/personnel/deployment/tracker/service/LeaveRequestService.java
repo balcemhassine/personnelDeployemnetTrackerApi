@@ -1,6 +1,7 @@
 package com.tbs.personnel.deployment.tracker.service;
 
 import com.tbs.personnel.deployment.tracker.dto.LeaveRequestDto;
+import com.tbs.personnel.deployment.tracker.dto.ProcessLeaveRequestDto;
 import com.tbs.personnel.deployment.tracker.mapper.EnlistedMapper;
 import com.tbs.personnel.deployment.tracker.mapper.LeaveRequestMapper;
 import com.tbs.personnel.deployment.tracker.model.entities.LeaveRequest;
@@ -75,4 +76,20 @@ public class LeaveRequestService {
         LeaveRequest toBeDeleted = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         repository.deleteById(id);
         return mapper.toDto(toBeDeleted);    }
+
+    public LeaveRequestDto acceptLeaveRequest(String id){
+
+        LeaveRequest result = repository.findLeaveRequestByIdAndStatus(id,LeaveRequestStatus.PENDING).orElseThrow(() -> new EntityNotFoundException());
+        result.setStatus(LeaveRequestStatus.ACCEPTED);
+        repository.save(result);
+        return mapper.toDto(result);
+    }
+    public LeaveRequestDto rejectLeaveRequest(String id,ProcessLeaveRequestDto processLeaveRequestDto){
+
+        LeaveRequest result = repository.findLeaveRequestByIdAndStatus(id,LeaveRequestStatus.PENDING).orElseThrow(() -> new EntityNotFoundException());
+        result.setStatus(LeaveRequestStatus.REJECTED);
+        result.setReasonOfRejection(processLeaveRequestDto.getReasonOfRejection());
+        repository.save(result);
+        return mapper.toDto(result);
+    }
 }

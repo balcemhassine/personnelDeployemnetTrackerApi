@@ -1,7 +1,9 @@
 package com.tbs.personnel.deployment.tracker.controller;
 
 
+import com.tbs.personnel.deployment.tracker.dto.EnlistedDto;
 import com.tbs.personnel.deployment.tracker.dto.LeaveRequestDto;
+import com.tbs.personnel.deployment.tracker.dto.ProcessLeaveRequestDto;
 import com.tbs.personnel.deployment.tracker.service.AuthenticationService;
 import com.tbs.personnel.deployment.tracker.service.LeaveRequestService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,17 +44,38 @@ public class LeaveRequestController {
     }
     @Operation(summary = "Get a Leave Request by ID")
     @GetMapping("/{id}")
-    public ResponseEntity<LeaveRequestDto> getById(@PathVariable(name = "id") String id){
-        LeaveRequestDto result = service.getById(id);
-        return new ResponseEntity(result, HttpStatus.OK);
+    public ResponseEntity<LeaveRequestDto> getById(@RequestHeader(value = "x-token", required = false) String token, @PathVariable(name = "id") String id){
+        HttpStatus status = HttpStatus.OK;
+        LeaveRequestDto result  = null;
+        try{
+            String connectedId = auth.tokenEvaluation(token);
+            result = service.getById(id);;
+        } catch (AuthException e) {
+
+                status  = HttpStatus.UNAUTHORIZED;
+            }
+        return new ResponseEntity(result, status);
     }
+
 
     @Operation(summary = "Create a new Leave Request")
     @PostMapping("/")
-    public ResponseEntity<LeaveRequestDto> create(@RequestBody LeaveRequestDto leaveRequestDto){
-        LeaveRequestDto result = service.create(leaveRequestDto);
-        return new ResponseEntity(result, HttpStatus.OK);
+    public ResponseEntity<LeaveRequestDto> create(@RequestHeader(value = "x-token", required = false) String token, @RequestBody LeaveRequestDto leaveRequestDto){
+        HttpStatus status = HttpStatus.OK;
+        LeaveRequestDto result  = null;
+        try{
+            String connectedId = auth.tokenEvaluation(token);
+            EnlistedDto enlistedDto = new EnlistedDto();
+            enlistedDto.setId(connectedId);
+            leaveRequestDto.setEnlisted(enlistedDto);
+            result = service.create(leaveRequestDto);
+        } catch (AuthException e) {
+
+            status  = HttpStatus.UNAUTHORIZED;
+        }
+        return new ResponseEntity(result, status);
     }
+
 
     @Operation(summary = "Update a Leave Request by ID (All fields in the same time [integral])")
     @PutMapping("/{id}")
@@ -75,4 +98,38 @@ public class LeaveRequestController {
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
+    @Operation(summary = "Accept a Leave Request by ID")
+    @PostMapping("/accept/{id}")
+    public ResponseEntity<LeaveRequestDto> acceptLeaveRequest(@RequestHeader(value = "x-token", required = false) String token,@PathVariable(name = "id") String id){
+        HttpStatus status = HttpStatus.OK;
+        LeaveRequestDto result  = null;
+        try{
+            auth.authorization(auth.tokenEvaluation(token), "admin");
+            result =service.acceptLeaveRequest(id);
+        } catch (AuthException e) {
+            if( e.getMessage().equals("There are no Token") || e.getMessage().equals("Token is not valid/Expired") ) {
+                status  = HttpStatus.UNAUTHORIZED;
+            } else if ( e.getMessage().equals("Not Authorized / insufficient role") ) {
+                status  = HttpStatus.FORBIDDEN;
+            }
+        }
+        return new ResponseEntity(result, status);
+    }
+    @Operation(summary = "Reject a Leave Request by ID")
+    @PostMapping("/reject/{id}")
+    public ResponseEntity<LeaveRequestDto> rejectLeaveRequest(@RequestHeader(value = "x-token", required = false) String token,@PathVariable(name = "id") String id,@RequestBody ProcessLeaveRequestDto processLeaveRequestDto){
+        HttpStatus status = HttpStatus.OK;
+        LeaveRequestDto result  = null;
+        try{
+            auth.authorization(auth.tokenEvaluation(token), "admin");
+            result =service.rejectLeaveRequest(id,processLeaveRequestDto);
+        } catch (AuthException e) {
+            if( e.getMessage().equals("There are no Token") || e.getMessage().equals("Token is not valid/Expired") ) {
+                status  = HttpStatus.UNAUTHORIZED;
+            } else if ( e.getMessage().equals("Not Authorized / insufficient role") ) {
+                status  = HttpStatus.FORBIDDEN;
+            }
+        }
+        return new ResponseEntity(result, status);
+    }
 }

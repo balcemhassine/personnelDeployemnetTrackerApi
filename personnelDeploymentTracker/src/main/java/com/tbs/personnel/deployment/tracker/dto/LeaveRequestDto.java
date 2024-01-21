@@ -1,5 +1,7 @@
 package com.tbs.personnel.deployment.tracker.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.tbs.personnel.deployment.tracker.model.enumerations.LeaveRequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +19,10 @@ public class LeaveRequestDto {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String reason;
-//    private EnlistedDto enlisted;
+    @JsonIgnore
+    private EnlistedDto enlisted ;
     private LeaveRequestStatus Status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String reasonOfRejection;
+
 }

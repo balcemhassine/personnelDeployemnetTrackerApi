@@ -41,7 +41,11 @@ public class SkillService {
         Skill savedEntity = repository.save(toBeSaved);
         return mapper.toDto(savedEntity);
     }
-
+    public List<SkillDto> createSkills(List<SkillDto> skillDtos){
+        List<Skill> toBeSaved = mapper.toEntity(skillDtos);
+        List<Skill> savedEntity = repository.saveAll(toBeSaved);
+        return mapper.toDto(savedEntity);
+    }
 
     public SkillDto update(String id, SkillDto skillDto){
         Skill toBeUpdated = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());

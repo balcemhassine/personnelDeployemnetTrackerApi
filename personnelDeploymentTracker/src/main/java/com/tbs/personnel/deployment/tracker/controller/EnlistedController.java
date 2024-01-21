@@ -44,7 +44,7 @@ public class EnlistedController {
 
     @Operation(summary = "Get a Enlisted by ID")
     @GetMapping("/{id}")
-    public ResponseEntity<EnlistedDto> getById(@RequestHeader(value = "x-token", required = false) String token, @PathVariable String id){
+    public ResponseEntity<EnlistedDto> getById(@RequestHeader(value = "x-token", required = false) String token, @PathVariable("id") String id){
 
         HttpStatus status = HttpStatus.OK;
         EnlistedDto result  = null;

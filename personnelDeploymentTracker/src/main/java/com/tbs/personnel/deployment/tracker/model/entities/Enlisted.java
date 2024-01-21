@@ -6,6 +6,7 @@ import com.tbs.personnel.deployment.tracker.model.Personnel;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "enlisted")
@@ -16,13 +17,19 @@ public class Enlisted extends Personnel {
     @Enumerated(EnumType.STRING)
     private HealthStatus health;
 
-    @OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    //@OneToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "EnlistedSkills",
+            joinColumns = @JoinColumn(name = "personnel_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private List<Skill> skills;
+
 
     @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Deployment> deployments;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "enlisted")
     private List<LeaveRequest> leaveRequests;
 
     private boolean isDeployed;

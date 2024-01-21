@@ -20,10 +20,11 @@ public class LeaveRequest {
     private LocalDateTime endDate;
     private String reason;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "enlisted_id")
-//    private Enlisted enlisted;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "enlisted_id" , nullable = false)
+    private Enlisted enlisted;
 
     @Enumerated(EnumType.STRING)
-    private LeaveRequestStatus Status;
+    private LeaveRequestStatus status;
+    private String reasonOfRejection;
 }
